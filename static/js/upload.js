@@ -58,7 +58,11 @@ var app = app || {};
         obj.options = options
         if (obj.options.file !== undefined) {
             ajax(getFormData(obj.options.file))
+
         }
+
+
+
     };
 
 

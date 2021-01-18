@@ -3,32 +3,25 @@
 
 {% block head_title %}my channel{% endblock %}
 
-
-<!--main body begins--->
-
-
-
 {% block content %}
 <div class=" w-full flex justify-center items-center " style="height: 280px;">
     <img src="{{channel.channel_banner.url}}" class="block w-screen rounded h-full" alt="channel banner">
 </div>
-<!--end main header-->
 <div>
     <div class="w-full h-32 bg-gray-400 flex items-center justify-between">
         <div class="flex space-x-4 pt-2 px-2">
-            <img src="{{channel.channel_picture.url}}" class="rounded-full h-16 w-16" alt="profile pic">
+            <img src="{{channel.channel_pic.url}}" class="rounded-full h-20 w-21" alt="profile pic">
             <div>
                 <h2>{{channel.name}}</h2>
                 <h4>448k subcriber</h4>
             </div>
         </div>
-        <div class="py-2 px-4">
+        <div class="py-3 px-3">
             <a href="{% url 'update-channel' channel.slug %}"
                 class="text-xl bg-blue-700 border border-gray-500 px-4 py-3">Edit channel</a>
             <button class="text-xl bg-blue-700 border border-gray-500 px-4 py-3">Vclub Studio</button>
         </div>
     </div>
-
     <div class="tab-container">
         <button class="tablink active:bg-gray-300" onclick="openPage('Home', this)" id="defaultOpen">Home</button>
         <button class="tablink active:bg-gray-300" onclick="openPage('video', this)">Video</button>
@@ -48,7 +41,7 @@
                     <img src="{{vid.videodetail.thumbnail.url}}" alt="thumbnail" class="w-full h-40">
 
                     <div class="flex justify-between mt-4">
-                        <img src="{{vid.channel.channel_picture.url}}" class="rounded-full h-10 w-10" alt="profile pic">
+                        <img src="{{ vid.channel.channel_pic.url}}" class="rounded-full h-10 w-10" alt="profile pic">
                         <div>
                             <h1>{{vid.videodetail.title}}</h1>
                             <div class="mt-2 text-sm text-white-700">
@@ -61,7 +54,6 @@
                                 d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
                         </svg>
                     </div>
-
                 </div>
                 {% endfor%}
             </div>

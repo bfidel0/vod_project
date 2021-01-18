@@ -42,7 +42,7 @@ class VideoFiles(models.Model):
     uploaded = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"video_file{self.id}"
+        return f"video_file_{self.id}"
 
     def get_absolute_url(self):
         return reverse('video_watch', args=[str(self.id)])

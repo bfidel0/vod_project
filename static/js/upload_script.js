@@ -1,4 +1,3 @@
-
 (function () {
     let standardUpload = document.getElementById('standard-upload')
     let dropzone = document.getElementById('drop-zone')
@@ -15,8 +14,6 @@
             token: token,
             progressbar: progressbar,
             progressText: progressText,
-
-
             completed: function (data) {
                 var uploadedElement;
                 var uploadedVideo;
@@ -28,17 +25,13 @@
                 videosource = document.createElement('source');
                 videosource.src = data.video_path;
                 videosource.type = 'video/mp4';
-
                 uploadedVideo.appendChild(videosource);
                 uploadedElement.appendChild(uploadedVideo);
-
                 uploadfinished.appendChild(uploadedElement)
                 uploadfinished.className = 'upload-completed';
-
                 uploadarea.className = 'hidden';
                 uploadinfo.className = 'video-info'
                 filefield.value = data.video_id
-
             },
             error: function () {
                 console.log('upload was not successful')
@@ -67,5 +60,7 @@
         return false
 
     }
+
+
 
 }())

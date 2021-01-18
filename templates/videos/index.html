@@ -10,6 +10,7 @@
     <div class="p-6 text-center">
         <h1 class="text-4xl font-bold font-serif capitalize py-4 ">Welcome to VideoClub</h1>
         <p class="text-xl mb-2 font-medium italic antialiased tracking-wide font-mono">share and enjoy exciting podcasts! </p>
+        
         <button
             class="py-2 my-4 bg-blue-500 text-white hover:bg-blue-700 px-4 shadow-lg text-md font-bold rounded border">Get Started</button>
     </div>
@@ -21,8 +22,8 @@
     <div class="grid lg:grid-cols-4 gap-8">
         {%for video in videos %}
         <div class="card">
-            <a href="{{video.get_absolute_url }}">
-                <img src="{{video.videodetail.thumbnail.url}}" alt="thumbnail" class="w-full h-40">
+            <a href="{{ video.get_absolute_url }}">
+                <img src="{{ video.videodetail.thumbnail.url }}" alt="thumbnail" class="w-full h-40">
 
                 <div class="flex justify-between mt-4">
                     <img src="{{video.channel.channel_pic.url}}" class="rounded-full h-10 w-10" alt="profile pic">

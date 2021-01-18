@@ -147,3 +147,4 @@ AUTHENTICATION_BACKENDS = (
 )
 ACCOUNT_FORMS = {'signup': 'users.forms.CustomUserCreationForm'}
 ACCOUNT_EMAIL_VERIFICATION = None
+LOGIN_REDIRECT_URL = 'home'

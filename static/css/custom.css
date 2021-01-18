@@ -38,11 +38,11 @@
   height: 100%;
   display: block;
 }
-.modal-content {
-  animation: modalopen;
+.model-content {
+  animation: modelopen;
   animation-duration: 1.5s;
 }
-@keyframes modalopen {
+@keyframes modelopen {
   from {
     opacity: 0;
   }
@@ -51,7 +51,7 @@
   }
 }
 
-#modal {
+#model {
   display: none;
 }
 
@@ -62,7 +62,7 @@
 }
 
 .tablink {
-  background-color: #555;
+  background-color: rgb(82, 130, 235);
   color: white;
   float: left;
   border: none;
@@ -74,16 +74,16 @@
 }
 
 .tablink:hover {
-  background-color: #777;
+  background-color: rgb(20, 15, 63);
 }
 
 /* Style the tab content (and add height:100% for full page content) */
 .tabcontent {
-  color: white;
+  color: rgb(0, 0, 0);
   /* display: none;*/
   padding: 50px 20px;
   height: 100vh;
-  background-color: rgba(24, 23, 23, 0.7);
+  background-color: rgba(253, 250, 250, 0.7);
 }
 
 body {

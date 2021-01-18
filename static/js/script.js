@@ -1,23 +1,23 @@
 var create_btn = document.getElementById('open');
 
-var modal = document.getElementById('modal');
+var model = document.getElementById('model');
 var close_btn = document.getElementById('close_btn');
 var closeBtn = document.getElementById('close');
 
-create_btn.addEventListener('click', openModal);
-close_btn.addEventListener('click', closeModal);
+create_btn.addEventListener('click', openModel);
+close_btn.addEventListener('click', closeModel);
 window.addEventListener('click', clickOutside);
-closeBtn.addEventListener('click', closeModal)
+closeBtn.addEventListener('click', closeModel)
 
-function openModal() {
-    modal.style.display = 'block'
+function openModel() {
+    model.style.display = 'block'
 }
-function closeModal() {
-    modal.style.display = 'none'
+function closeModel() {
+    model.style.display = 'none'
 }
 function clickOutside(e) {
-    if (e.target == modal) {
-        modal.style.display = 'none'
+    if (e.target == model) {
+        model.style.display = 'none'
     }
 
 }

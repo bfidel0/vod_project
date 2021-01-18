@@ -72,7 +72,7 @@ def edit_channel(request, slug):
         context = {
             'edit_form': form
         }
-    return render(request, 'channel/edit.html', context)
+    return render(request, 'channel/edit_channel.html', context)
 
 
 @login_required
@@ -83,30 +83,30 @@ def upload_view(request):
 def upload_processing(request):
     channel = Channel.objects.get(slug=request.user.username)
     if channel is not None:
-        if request.method == 'POST':
-            file = request.FILES['files']
+        if request.method == "POST":
+            file = request.FILES['file']
             upload = VideoFiles.objects.create(video=file, channel=channel)
             data = {
                 'video_id': upload.id,
-                'video_path': upload.video.url
+                "video_path": upload.video.url
             }
             return JsonResponse(data, safe=False)
-        return JsonResponse({'error': 'oops an error occurred'})
+        return JsonResponse({'error': 'an error ocurred'})
     else:
-        # messages.info(You don't seem to have a channel yet. Create one to start uploading podcats!)
-        return redirect('file-upload')
+       # messages.info( sorry you dont have channel please create one)
+        return redirect("file-upload")
 
 
 def video_info_process(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         file_id = request.POST['videofile']
         title = request.POST['title']
-        description = request.POST['description']
+        desc = request.POST['description']
         visibility = request.POST['visibility']
         thumbnail = request.FILES['thumbnail']
         video = get_object_or_404(VideoFiles, id=file_id)
         VideoDetail.objects.create(
-            videofile=video, title=title, description=description, visibility=visibility, thumbnail=thumbnail)
-        # Message upload successful. Use django.messages. Not yet implemented
+            videofile=video, title=title, description=desc, visibility=visibility, thumbnail=thumbnail)
+        # message video uploaded successful
         return redirect('mychannel', slug=request.user.username)
     return redirect('file-upload')
