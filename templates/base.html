@@ -2,12 +2,11 @@
 {% load channel_check %}
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{%static 'css/custom.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}" >
     <title>{% block head_title %}{% endblock %}</title>
     {% block extra_head %}
     {% endblock %}

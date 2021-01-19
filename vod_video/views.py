@@ -57,7 +57,7 @@ def video_watch_view(request, video_id):
         'my_video': video,
         'view_count': video_views
     }
-    return render(request, 'videos/watch.html')
+    return render(request, 'videos/watch.html', context)
 
 
 def edit_channel(request, slug):
