@@ -19,28 +19,45 @@
                 <span>{{ my_video.uploaded|timesince }} ago</span>
             </div>
             <div class="flex space-x-8 font-medium text-gray-700 text-xl">
+                <form action="{% url 'like-video' my_video.id %}" method="POST" class="like-form">
+                    {% csrf_token %}
+                    <button type="submit" class="like-btn" name="video_id" value="{{ my_video.id }}">
+                        {% if user not in my_video.likes.all %}
+                        <svg xmlns="http://www.w3.org/2000/svg" class=" mr-2 like-icon inline-block" viewBox="0 0 20 20" width="24" height="24" fill="currentColor">
+                            <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
+                        </svg>
+                        {% else %}
+                        <svg xmlns="http://www.w3.org/2000/svg" class=" mr-2 like-icon text-blue-700 inline-block" viewBox="0 0 20 20"
+                            width="24" height="24" fill="currentColor">
+                            <path
+                                d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
+                        </svg>
+                        {% endif %}
+                    </button>
+                    <span class="like-count" id="like-count">{{ my_video.num_likes }}</span>
+                </form>
+                <form action="{% url 'dislike-video' my_video.id%}" method="POST" class="dislike-form">
+                    {% csrf_token %}
+                    <button type="submit" class="dislike-btn" name="video_id" value="{{ my_video.id }}">
+                        {% if user not in my_video.dislikes.all %}
+                        <svg xmlns="http://www.w3.org/2000/svg" class=" mr-2 dislike-icon inline-block" viewBox="0 0 20 20" width="24"
+                            height="24" fill="currentColor">
+                            <path
+                                d="M18 9.5a1.5 1.5 0 11-3 0v-6a1.5 1.5 0 013 0v6zM14 9.667v-5.43a2 2 0 00-1.105-1.79l-.05-.025A4 4 0 0011.055 2H5.64a2 2 0 00-1.962 1.608l-1.2 6A2 2 0 004.44 12H8v4a2 2 0 002 2 1 1 0 001-1v-.667a4 4 0 01.8-2.4l1.4-1.866a4 4 0 00.8-2.4z" />
+                        </svg>
+                        {% else %}
+                        <svg xmlns="http://www.w3.org/2000/svg" class=" mr-2 dislike-icon text-blue-700 inline-block"
+                            viewBox="0 0 20 20" width="24" height="24" fill="currentColor">
+                            <path
+                                d="M18 9.5a1.5 1.5 0 11-3 0v-6a1.5 1.5 0 013 0v6zM14 9.667v-5.43a2 2 0 00-1.105-1.79l-.05-.025A4 4 0 0011.055 2H5.64a2 2 0 00-1.962 1.608l-1.2 6A2 2 0 004.44 12H8v4a2 2 0 002 2 1 1 0 001-1v-.667a4 4 0 01.8-2.4l1.4-1.866a4 4 0 00.8-2.4z" />
+                        </svg>
+                        {% endif %}
+                    </button>
+                    <span id="dislike-count">{{ my_video.num_dislikes }}</span>
+                </form>
                 <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" class=" mr-2 inline-block" viewBox="0 0 20 20" width="24"
-                        height="24" fill="currentColor">
-                        <path
-                            d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
-                    </svg>
-                    <span>21.4k</span>
-                </div>
-                <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" class=" mr-2 inline-block" viewBox="0 0 20 20" width="24"
-                        height="24" fill="currentColor">
-                        <path
-                            d="M18 9.5a1.5 1.5 0 11-3 0v-6a1.5 1.5 0 013 0v6zM14 9.667v-5.43a2 2 0 00-1.105-1.79l-.05-.025A4 4 0 0011.055 2H5.64a2 2 0 00-1.962 1.608l-1.2 6A2 2 0 004.44 12H8v4a2 2 0 002 2 1 1 0 001-1v-.667a4 4 0 01.8-2.4l1.4-1.866a4 4 0 00.8-2.4z" />
-                    </svg>
-                    <span>489</span>
-                </div>
-
-                <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" class=" mr-2 inline-block" fill="none" viewBox="0 0 24 24"
-                        width="24" height="24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                    <svg xmlns="http://www.w3.org/2000/svg" class=" mr-2 inline-block" viewBox="0 0 20 20" width="24" height="24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
                     </svg>
                     <span>share</span>
                 </div>
@@ -54,8 +71,8 @@
 
         <div class="flex justify-between mt-6">
             <div class="flex space-x-2">
-                <img src="{{my_video.channel.channel_picture.url}}" class="rounded-full h-12 w-12" alt="profile pic">
-                <div>
+                <img src="{{my_video.channel.channel_pic.url}}" class="rounded-full h-14 w-12" alt="profile pic">
+                <div> 
                     <h2>{{my_video.channel.name}}</h2>
                     <h3>32.7k subcribers</h3>
                 </div>
@@ -67,73 +84,20 @@
         </div>
 
         <div class="py-8 px-12 bg-gray-300 mt-2">
-            <p class="font-medium">
-                Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit. Phasellus imperdiet,
-                nulla et dictum interdum, nisi lorem
-                nulla et dictum interdum, nisi lorem
-                nulla et dictum interdum, nisi lorem
-                containing Lorem Ipsum passages, and more
-                recently with desktop publishing software like Aldus
-                PageMaker including versions of Lorem Ipsum
+            <!-- description goes here -->
+            <p>
+                {{ my_video.channel.desc }}
             </p>
         </div>
-        <div>
-            <div class="font-semibold capitalize text-2xl py-2">59 comments</div>
-            <textarea name="comment" rows="4" id="comment"
-                class="w-11/12 outline-none tracking-wider p-6 border-b border-gray-700"
-                placeholder="Add a comment .."></textarea>
-        </div>
-        <div class="comment">
-            <div class="flex space-x-3 my-2">
-                <img src="imgs/channel_pic.jpg" class="rounded-full h-10 w-10" alt="profile pic">
-                <div class="py-2">
-                    <h2 class="capitalize font-semibold text-xl">channel name or username <span class="text-lg">3 days
-                            ago</span></h2>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi qui amet maxime repudiandae
-                        eligendi consectetur
-                        soluta repellat debitis ut perferendis?</p>
-                    <a href="#" class="text-lg capitalize py-2 text-blue-700">reply</a>
-                </div>
-            </div>
-
-            <div class="flex space-x-3 my-2">
-                <img src="imgs/channel_pic.jpg" class="rounded-full h-10 w-10" alt="profile pic">
-                <div class="pb-3">
-                    <h2 class="capitalize font-semibold text-xl">channel name or username <span class="text-lg">3 days
-                            ago</span></h2>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi qui amet maxime repudiandae
-                        eligendi consectetur
-                        soluta repellat debitis ut perferendis?</p>
-                    <a href="#" class="text-lg capitalize py-2 text-blue-700">reply</a>
-                </div>
-            </div>
-
-            <div class="flex space-x-3 my-2">
-                <img src="imgs/channel_pic.jpg" class="rounded-full h-10 w-10" alt="profile pic">
-                <div>
-                    <h2 class="capitalize font-semibold text-xl">channel name or username <span class="text-lg">3 days
-                            ago</span></h2>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi qui amet maxime repudiandae
-                        eligendi consectetur
-                        soluta repellat debitis ut perferendis?</p>
-                    <a href="#" class="text-lg capitalize py-2 text-blue-700">reply</a>
-                </div>
-            </div>
-
-            <div class="flex space-x-3 my-2">
-                <img src="imgs/channel_pic.jpg" class="rounded-full h-10 w-10" alt="profile pic">
-                <div class="py-2">
-                    <h2 class="capitalize font-semibold text-xl">channel name or username <span class="text-lg">3 days
-                            ago</span></h2>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi qui amet maxime repudiandae
-                        eligendi consectetur
-                        soluta repellat debitis ut perferendis?</p>
-                    <a href="#" class="text-lg capitalize py-2 text-blue-700">reply</a>
-                </div>
+        <!-- Comments start here -->
+        <div class="card my-3">
+            <h4 class="card-header">Add comment</h4>
+            <div class="card-body">
+                <textarea class="form-control comment-text" rows="4" id="comment" class="w-11/12 outline-none tracking-wider p-6 border-b border-gray-700"></textarea>
+                <button type="button" id=video class="btn btn-dark my-3 save-comment">Submit</button>
             </div>
         </div>
-    </div>
+    <!-- Comments end here -->
     <div class="container h-screen min-h-full  bg-white">
         <h2 class="font-semibold py-2 capitalize text-xl">Up next</h2>
         <div class=" flex  space-x-2 py-2  border-t  px-2">
@@ -192,5 +156,5 @@
 {% endblock %}
 
 {% block extra_body %}
-
+<script src="{% static 'js/like_dislike.js' %}"></script>
 {% endblock %}

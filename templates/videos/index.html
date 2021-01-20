@@ -12,7 +12,7 @@
         <p class="text-xl mb-2 font-medium italic antialiased tracking-wide font-mono">share and enjoy exciting podcasts! </p>
         
         <button
-            class="py-2 my-4 bg-blue-500 text-white hover:bg-blue-700 px-4 shadow-lg text-md font-bold rounded border">Get Started</button>
+            class="py-2 my-4 bg-blue-500 text-white hover:bg-blue-700 px-4 shadow-lg text-md font-bold rounded border">Get Started</button> <!-- no fuctionality right now -->
     </div>
 </div>
 
@@ -31,7 +31,8 @@
                         <h1 class="capitalize font-medium">{{video.videodetail.title}}</h1>
                         <div class="mt-2 text-sm text-gray-700">
                             <h2>{{video.channel.name}}</h2>
-                            <h3>{{ video.view_count.count}}  views 3 day ago</h3>
+                            <h3>{{ video.view_count.count}} views </h3>
+                            <span> {{ video.uploaded|timesince }} ago</span>
                         </div>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="24" height="24" viewBox="0 0 24 24"
