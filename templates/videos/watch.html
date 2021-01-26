@@ -8,6 +8,7 @@
 <div class="grid grid-cols-3">
     <div class="col-span-2 p-8">
         <div class="video"> 
+            <!--On mobile check-->
             <video id="video" width="100%" height="auto" onclick="playPause();" controls autoplay> 
                 <source src="{{ my_video.video.url }}" type="video/mp4">
             </video>
@@ -36,10 +37,11 @@
                     </button>
                     <span class="like-count" id="like-count">{{ my_video.num_likes }}</span>
                 </form>
-                <form action="{% url 'dislike-video' my_video.id%}" method="POST" class="dislike-form">
+                <form action="{% url 'dislike-video' my_video.id %}" method="POST" class="dislike-form">
                     {% csrf_token %}
                     <button type="submit" class="dislike-btn" name="video_id" value="{{ my_video.id }}">
                         {% if user not in my_video.dislikes.all %}
+                        <!--check dislike functionality for template fix-->
                         <svg xmlns="http://www.w3.org/2000/svg" class=" mr-2 dislike-icon inline-block" viewBox="0 0 20 20" width="24"
                             height="24" fill="currentColor">
                             <path
@@ -59,6 +61,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class=" mr-2 inline-block" viewBox="0 0 20 20" width="24" height="24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
                     </svg>
+                    <!--many to many relationship-->
                     <span>share</span>
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="24" height="24"
@@ -77,37 +80,37 @@
                     <h3>32.7k subcribers</h3>
                 </div>
             </div>
-            <div>
+            <div> <!--many to many relationships-->
                 <button type="button"
                     class="px-8 py-3 bg-red-700 text-white font-medium text-l border border-gray-400">Subcribe</button>
             </div>
         </div>
-
+<!--Description start-->
         <div class="py-8 px-12 bg-gray-300 mt-2">
-            <!-- description goes here -->
-            <p>
-                {{ my_video.channel.desc }}
-            </p>
+                <p class="font-medium">
+                    {{ my_video.videodetail.description }}
+                </p>
         </div>
+<!--Description End-->
+
         <!-- Comments start here -->
-        <div class="card my-3">
-            <h4 class="card-header">Add comment</h4>
-            <div class="card-body">
-                <textarea class="form-control comment-text" rows="4" id="comment" class="w-11/12 outline-none tracking-wider p-6 border-b border-gray-700"></textarea>
-                <button type="button" id=video class="btn btn-dark my-3 save-comment">Submit</button>
-            </div>
+        <div class="col md-8">
         </div>
+
     <!-- Comments end here -->
     <div class="container h-screen min-h-full  bg-white">
         <h2 class="font-semibold py-2 capitalize text-xl">Up next</h2>
         <div class=" flex  space-x-2 py-2  border-t  px-2">
             <div class="w-1/2 h-40 py-2">
+                <!--video thumbnail load-->
                 <img src="imgs/django.jpg" class="" alt="thumbnail">
             </div>
             <div>
                 <h1 class="font-semibold">Lorem ipsum dolor sit, amet <br> consectetur consectetur.</h1>
                 <div class="mt-2 text-sm text-gray-700">
+                    <!--channel name load-->
                     <h2>channel name</h2>
+                    <!--View count and upload since tags-->
                     <h3>1.9k views 3 day ago</h3>
                 </div>
             </div>
@@ -115,12 +118,15 @@
 
         <div class=" flex  space-x-2 py-2  border-t  px-2">
             <div class="w-1/2 h-40 py-2">
+                <!--video thumbnail load-->
                 <img src="imgs/django.jpg" class="" alt="thumbnail">
             </div>
             <div>
                 <h1 class="font-semibold">Lorem ipsum dolor sit, amet <br> consectetur consectetur.</h1>
                 <div class="mt-2 text-sm text-gray-700">
+                    <!--channel name load-->
                     <h2>channel name</h2>
+                    <!--View count and upload since tags-->
                     <h3>1.9k views 3 day ago</h3>
                 </div>
             </div>
@@ -128,12 +134,15 @@
 
         <div class=" flex  space-x-2 py-2  border-t  px-2">
             <div class="w-1/2 h-40 py-2">
+                <!--video thumbnail load-->
                 <img src="imgs/django.jpg" class="" alt="thumbnail">
             </div>
             <div>
                 <h1 class="font-semibold">Lorem ipsum dolor sit, amet <br> consectetur consectetur.</h1>
                 <div class="mt-2 text-sm text-gray-700">
+                    <!--channel name load-->
                     <h2>channel name</h2>
+                    <!--View count and upload since tags-->
                     <h3>1.9k views 3 day ago</h3>
                 </div>
             </div>
@@ -141,12 +150,15 @@
 
         <div class=" flex  space-x-2 py-2  border-t  px-2">
             <div class="w-1/2 h-40 py-2">
+                <!--video thumbnail load-->
                 <img src="imgs/django.jpg" class="" alt="thumbnail">
             </div>
             <div>
                 <h1 class="font-semibold">Lorem ipsum dolor sit, amet <br> consectetur consectetur.</h1>
                 <div class="mt-2 text-sm text-gray-700">
+                    <!--channel name load-->
                     <h2>channel name</h2>
+                    <!--View count and upload since tags-->
                     <h3>1.9k views 3 day ago</h3>
                 </div>
             </div>

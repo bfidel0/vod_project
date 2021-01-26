@@ -38,14 +38,15 @@
             <div class="grid lg:grid-cols-4 gap-8 mt-2">
                 {% for vid in my_videos%}
                 <div class="card">
+                    <a href="{{ video.get_absolute_url }}"></a>
                     <img src="{{vid.videodetail.thumbnail.url}}" alt="thumbnail" class="w-full h-40">
-
                     <div class="flex justify-between mt-4">
                         <img src="{{ vid.channel.channel_pic.url}}" class="rounded-full h-10 w-10" alt="profile pic">
                         <div>
                             <h1>{{vid.videodetail.title}}</h1>
                             <div class="mt-2 text-sm text-white-700">
-                                <h3>1.9k views 3 day ago</h3>
+                                <h3><span>{{ vid.view_count.count}} views </span></h3>
+                                <span>{{ vid.uploaded|timesince }} ago </span>
                             </div>
                         </div>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="24" height="24" viewBox="0 0 24 24"

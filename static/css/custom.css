@@ -163,3 +163,16 @@ form {
 .video {
   object-fit: cover;
 }
+
+.comment-add {
+  border-bottom: 1px solid #ccc !important;
+}
+
+.comment-add:focus {
+  border-color: #1497ff;
+  box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075), 0 0 0px rgba(255, 0, 0, 0.6);
+}
+
+.node-content {
+  padding-left: 64px;
+}

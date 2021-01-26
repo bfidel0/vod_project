@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Search Page{% endblock %}
+{% block content %}
+    {% if q %}
+    <h1>Videos containing "{{ q }}"
+    </h1>
+    <p>
+        {% with results.count as total_results %}
+        Found {{ total_results }} result{{ total_results|pluralize }}
+        {% endwith %}
+    </p>
+                <div class="grid lg:grid-cols-4 gap-8">
+                {% for video in results %}
+                <div class="card">
+                    <a href="{{ video.get_absolute_url }}">
+                        <img src="{{ video.thumbnail.url }}" alt="thumbnail" class="w-full h-40">
+                        <div class="flex justify-between mt-4">
+                            <img src="{{video.channel.channel_pic.url}}" class="rounded-full h-10 w-10" alt="profile pic">
+                            <div>
+                                <h1 class="capitalize font-medium">{{video.title}}</h1>
+                                <div class="mt-2 text-sm text-gray-700">
+                                    <h2>{{video.channel.name}}</h2>
+                                    <h3>{{ video.videodetail.view_count.count }} views </h3>
+                                    <span> {{ video.uploaded|timesince }} ago</span>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </a>
+                {% empty %}
+                <p>There are no results for your query.</p>
+                {% endfor %}
+            </div>
+    {% else %}
+    <h1>Search for Videos</h1>
+    <form method="get">
+        {{ search_form.as_p }}
+        <input class="btn btn-primary my-1" type="submit" value="Search">
+    </form>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_body%}
+
+{% endblock %}

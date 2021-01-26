@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.sites',
     'django.contrib.staticfiles',
+    'django.contrib.postgres',
     # Local apps
     'users.apps.UsersConfig',
     'vod_video.apps.VodVideoConfig',
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'mptt',
 ]
 
 

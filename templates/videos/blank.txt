@@ -92,3 +92,46 @@
         {% endif %}
         </textarea>
     </div> 
+
+
+
+# my version
+    <div class="card my-3">
+            <h4 class="card-header">Add comment</h4>
+            <div class="card-body">
+                <textarea class="form-control comment-text" rows="4" id="comment" class="w-11/12 outline-none tracking-wider p-6 border-b border-gray-700"></textarea>
+                <button type="button" id=video class="btn btn-dark my-3 save-comment">Submit</button>
+            </div>
+        </div>
+
+
+
+
+        <div class="flex">
+            <input type="text" name="search" class="border border-gray-400  px-3 py-3 outline-none focus:shadow-outline" size="60" placeholder="Search...">
+            <form method="get">
+                {{ form.as_p }}
+            </form>
+            <div class="flex items-center border border-l-0 border-gray-400 px-4 hover:bg-gray-200">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                        clip-rule="evenodd" />
+                </svg>
+            </div>
+        </div>
+
+
+
+        <div class="card">
+                    <a href="{{ video.get_absolute_url }}">
+                        <img src="{{ video.thumbnail.url }}" alt="thumbnail" class="w-full h-40">
+                            <div class="flex justify-between mt-4">
+                                <img src="{{video.channel_pic.url}}" class="rounded-full h-10 w-10" alt="profile pic">
+                                <div>
+                                <h1 class="capitalize font-medium">{{video.title|truncatechars:50}}</h2>
+                                    <div class="mt-2 text-sm text-gray-700"></div>
+                                <p class="card-text">{{video.excerpt|truncatechars:50}}</p>
+                                    <span>{{ video.uploaded|timesince }} ago</span>
+                                    </div>
+                                </div>

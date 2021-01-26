@@ -1,9 +1,10 @@
 from django.urls import path
-from .views import create_channel, channel, edit_channel, upload_view, upload_processing, video_info_process, index, video_watch_view, liked_video, dislike_video
+from .views import create_channel, channel, edit_channel, upload_view, upload_processing, video_info_process, index, video_watch_view, liked_video, dislike_video, video_search
 
 
 urlpatterns = [
     path('', index, name='home'),
+    path('search/', video_search, name='video_search'),
     path('watch/?v=<uuid:video_id>', video_watch_view, name='video_watch'),
     path('channel/create/', create_channel, name='create-channel'),
     path('channel/<slug>/', channel, name='mychannel'),

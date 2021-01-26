@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
-from .forms import ChannelForm, EditChannelForm
+from .forms import ChannelForm, EditChannelForm, VideoSearchForm
 from .models import Channel, VideoFiles, VideoDetail, ViewCount
 from django.conf import settings
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
+from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 
 
 def create_channel(request):
@@ -33,11 +35,10 @@ def channel(request, slug):
     }
     return render(request, 'channel/channel_home.html', context)
 
-# returns only public videos on home page
-
 
 def index(request):
     allvideos = VideoFiles.objects.all()
+    # causes only public videos to show
     allvideos = allvideos.filter(videodetail__visibility=True)
     context = {
         'videos': allvideos
@@ -57,6 +58,7 @@ def video_watch_view(request, video_id):
         'my_video': video,
         'view_count': video_views
     }
+
     return render(request, 'videos/watch.html', context)
 
 
@@ -156,3 +158,26 @@ def video_info_process(request):
         # message video uploaded successful
         return redirect('mychannel', slug=request.user.username)
     return redirect('file-upload')
+
+
+def video_search(request):
+    search_form = VideoSearchForm()
+    q = ''
+    results = []
+
+    if 'q' in request.GET:
+        search_form = VideoSearchForm(request.GET)
+        if search_form.is_valid():
+            q = search_form.cleaned_data['q']
+
+            vector = SearchVector('title', weight='A') + \
+                SearchVector('description', weight='B')
+            query = SearchQuery(q)
+
+            results = VideoDetail.objects.annotate(
+                rank=SearchRank(vector, query, cover_density=True)).order_by('-rank')
+
+    return render(request, 'videos/search.html',
+                  {'search_form': search_form,
+                   'q': q,
+                   'results': results})

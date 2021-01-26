@@ -30,19 +30,21 @@
                 </div>
             </a>
         </div>
-
-        <div class="flex">
-            <input type="text" name="search" class="border border-gray-400  px-3 py-3 outline-none focus:shadow-outline"
-                size="60" placeholder="Search...">
-            <div class="flex items-center border border-l-0 border-gray-400 px-4 hover:bg-gray-200">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd"
-                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                        clip-rule="evenodd" />
-                </svg>
+<!--Search bar-->
+            <div class="flex">
+                <form action="/search/" method="GET">
+                    <input type="text" name="q" class="border border-gray-400  px-3 py-3 outline-none focus:shadow-outline" size="60" placeholder="Search...">
+                    </form>
+                <div class="flex items-center border border-l-0 border-gray-400 px-2 hover:bg-gray-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd"
+                            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </div>
             </div>
-        </div>
-
+<!-- End Search bar-->
+<!--File upload-->
         <div class="flex items-center">
             <a href="{% url 'file-upload' %}">
                 <svg xmlns="http://www.w3.org/2000/svg" class=" w-10 px-2 cursor-pointer" viewBox="0 0 20 20"
@@ -51,7 +53,8 @@
                         d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z" />
                 </svg>
             </a>
-
+<!--End File upload-->
+<!--Notification -->
             <svg xmlns="http://www.w3.org/2000/svg" class=" w-10 px-2 cursor-pointer" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -91,7 +94,8 @@
                     </ul>
                 </div>
             </div>
-
+<!-- End Notification -->
+<!--Channel logic -->
             <div class="relative profile">
                 {% if user.is_authenticated %}
                 <div class="icon_wrap p-2">
@@ -132,6 +136,7 @@
                             </a>
                         </li>
                         {% endif %}
+                        <!--End Channel logic -->
                         <li class="border-b border-gray-200 hover:bg-gray-200">
                             <a href="#"
                                 class="flex items-center py-3 px-4 text-xl text-gray-600 font-semibold capitalize">
@@ -147,22 +152,6 @@
                             </a>
                         </li>
                         <li class="border-b border-gray-200 hover:bg-gray-200">
-                            <a href="#"
-                                class="flex items-center py-3 px-4 text-xl text-gray-600 font-semibold capitalize">
-                                <span class="p_icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="24" height="24"
-                                        class="mx-2" fill="currentColor">
-                                        <path
-                                            d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z" />
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </span>
-                                paid membership
-                            </a>
-                        </li>
-                        <li class="border-b border-gray-200 hover:bg-gray-200">
                             <a href=""
                                 class="flex items-center py-3 px-4 text-xl text-gray-600 font-semibold capitalize">
                                 <span class="p_icon">
@@ -173,6 +162,7 @@
                                             clip-rule="evenodd" />
                                     </svg>
                                 </span>
+                                <!--link to seperate settings templates-->
                                 settings
                             </a>
                         </li>
@@ -213,7 +203,7 @@
     </div>
     {% endif %}
 
-
+<!--Navbar logic -->
     <main>
         <div class="flex mt-20 ">
             <div class="bg-white h-screen text-sm tracking-tighter cursor-pointer left-0 fixed">
@@ -232,6 +222,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                     </svg>
+                    <!--Queryset on num_likes or view_count-->
                     <span class="mt-2">Trending</span>
                 </div>
 
@@ -242,16 +233,11 @@
                             d="M4 5a2 2 0 00-2 2v8a2 2 0 002 2h12a2 2 0 002-2V7a2 2 0 00-2-2h-1.586a1 1 0 01-.707-.293l-1.121-1.121A2 2 0 0011.172 3H8.828a2 2 0 00-1.414.586L6.293 4.707A1 1 0 015.586 5H4zm6 9a3 3 0 100-6 3 3 0 000 6z"
                             clip-rule="evenodd" />
                     </svg>
+                    <!--same many to many relationship-->
                     <span class="mt-2">Subcriptions</span>
                 </div>
-
-                <div class="hover:bg-gray-200 flex flex-col items-center py-4 w-full">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="24" height="24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                    </svg>
-                    <span class="mt-2">Library</span>
+                    <!--later config on load num_likes-->
+                    
                 </div>
             </div>
 
@@ -263,7 +249,7 @@
             </div>
         </div>
     </main>
-
+<!--End Navbar  -->
     {% endblock %}
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"

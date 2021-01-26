@@ -24,16 +24,15 @@
         <div class="card">
             <a href="{{ video.get_absolute_url }}">
                 <img src="{{ video.videodetail.thumbnail.url }}" alt="thumbnail" class="w-full h-40">
-
                 <div class="flex justify-between mt-4">
                     <img src="{{video.channel.channel_pic.url}}" class="rounded-full h-10 w-10" alt="profile pic">
-                    <div>
                         <h1 class="capitalize font-medium">{{video.videodetail.title}}</h1>
-                        <div class="mt-2 text-sm text-gray-700">
+                        <div class="mt-2 text-sm text-gray-700"> 
                             <h2>{{video.channel.name}}</h2>
-                            <h3>{{ video.view_count.count}} views </h3>
-                            <span> {{ video.uploaded|timesince }} ago</span>
-                        </div>
+                            <div class="mt-2 text-sm text-white-700">
+                            <h3><span>{{ video.view_count.count}} views </h3></span>
+                            <h3><span> {{ video.uploaded|timesince }} ago</span></h3>
+                            </div>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" width="24" height="24" viewBox="0 0 24 24"
                         stroke="currentColor">

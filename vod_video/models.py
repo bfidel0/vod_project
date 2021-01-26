@@ -2,6 +2,7 @@ import uuid
 from django.db import models
 from django.conf import settings
 from django.shortcuts import reverse
+
 # Quick little function for directory of video files unique to channel
 
 
