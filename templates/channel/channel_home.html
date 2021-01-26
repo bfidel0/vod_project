@@ -19,7 +19,6 @@
         <div class="py-3 px-3">
             <a href="{% url 'update-channel' channel.slug %}"
                 class="text-xl bg-blue-700 border border-gray-500 px-4 py-3">Edit channel</a>
-            <button class="text-xl bg-blue-700 border border-gray-500 px-4 py-3">Vclub Studio</button>
         </div>
     </div>
     <div class="tab-container">
@@ -68,7 +67,7 @@
 
         <div id="About" class="tabcontent">
             <h3>About</h3>
-            <p>Description of who they are what their podcast is about blah</p>
+            <p>{{ channel.description }}</p>
         </div>
     </div>
 
